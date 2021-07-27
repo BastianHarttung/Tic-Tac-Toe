@@ -1,10 +1,15 @@
 let fields = [];
 let player = 'X';
+let winner;
 
 function startGame(){
+    winner = undefined;
     player = 'X';
     fields = [];
-    document.getElementById('Player').innerHTML = player;
+
+    document.getElementById('Player1-container').classList.add('active');
+    document.getElementById('Player2-container').classList.remove('active');
+    
     cleanField();
     draw();
 
@@ -22,11 +27,13 @@ function fillShape(id){
     
     if (player == 'X') {
         fields[id] = 'X';
-        document.getElementById('Player').innerHTML = 'O';
+        document.getElementById('Player2-container').classList.add('active');
+        document.getElementById('Player1-container').classList.remove('active');
         player = 'O';
     }else if (player =='O'){
         fields[id] = 'O';
-        document.getElementById('Player').innerHTML = 'X';
+        document.getElementById('Player1-container').classList.add('active');
+        document.getElementById('Player2-container').classList.remove('active');
         player = 'X';
     }    
         
@@ -45,34 +52,32 @@ function draw(){
     }
 };
 
-function checkForWin(){
-    let winner;   
-
+function checkForWin(){   
     /* Horizontal */
-    if(fields[0] == fields[1] && fields[1] == fields[2]){
+    if(fields[0] == fields[1] && fields[1] == fields[2] && fields[0]){
         winner = fields[0];        
     }
-    else if(fields[3] == fields[4] && fields[4] == fields[5]){
+    if(fields[3] == fields[4] && fields[4] == fields[5] && fields[3]){
         winner = fields[3];
     }
-    else if(fields[6] == fields[7] && fields[7] == fields[8]){
+    if(fields[6] == fields[7] && fields[7] == fields[8] && fields[6]){
         winner = fields[6];
     }
     /* Vertikal */
-    else if(fields[0] == fields[3] && fields[3] == fields[6]){
+    if(fields[0] == fields[3] && fields[3] == fields[6] && fields[0]){
         winner = fields[0];
     }
-    else if(fields[1] == fields[4] && fields[4] == fields[7]){
+    if(fields[1] == fields[4] && fields[4] == fields[7] && fields[1]){
         winner = fields[1];
     }
-    else if(fields[2] == fields[5] && fields[5] == fields[8]){
+    if(fields[2] == fields[5] && fields[5] == fields[8] && fields[2]){
         winner = fields[2];
     }
     /* Diagonal */
-    else if(fields[0] == fields[4] && fields[4] == fields[8]){
+    if(fields[0] == fields[4] && fields[4] == fields[8] && fields[0]){
         winner = fields[0];
     }
-    else if(fields[2] == fields[4] && fields[4] == fields[6]){
+    if(fields[2] == fields[4] && fields[4] == fields[6] && fields[2]){
         winner = fields[2];
     }
 
@@ -82,8 +87,8 @@ function checkForWin(){
 };
     
 function winAlert(winner){
-    setTimeout(function(){
-        alert('Gewonnen: Player '+winner)
+    setTimeout(function(){        
+        alert('Gewonnen: Player '+winner);
         startGame();
     }, 30);
     
