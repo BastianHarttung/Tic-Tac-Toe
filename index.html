@@ -6,69 +6,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </head>
 
-<body onload="startGame()">
+<body>
 
     <div id="Game" class="game">
 
-        <div class="player-container">
-            <div id="Player1-container" class="player">
-                <span id="Player1">Player 1 </span><img src="./img/X.png">
+        <div id="Startscreen" class="startscreen">
+            <div class="start-img">
+                <img src="img/tictactoe.png" alt="Tic-Tac-Toe">
+                <div class="x-o-container">
+                    <img src="img/X.png" alt="X">
+                    <img src="img/O.png" alt="O">
+                </div>
             </div>
-            <div id="Player2-container" class="player">
-                <span id="Player2">Player 2 </span><img src="./img/O.png">
+            <div id = "Player-input-container" class= "player-input-container">
+                <input type="text" id="Player-1-input" placeholder="Player 1 X" required value="Player 1">
+                <input type="text" id="Player-2-input" placeholder="Player 2 O" required value="Player 2">
+            </div>
+            <div class="d-flex-center">
+                <div class="btn-start" onclick="startGame()">Start</div>
             </div>
         </div>
 
-        <table>
-            <tr>
-                <td onclick="fillShape(0)">
-                    <img id="X-image-0" src="./img/X.png" class="d-none">
-                    <img id="O-image-0" src="./img/O.png" class="d-none">
-                </td>
-                <td onclick="fillShape(1)">
-                    <img id="O-image-1" src="./img/O.png" class="d-none">
-                    <img id="X-image-1" src="./img/X.png" class="d-none">
-                </td>
-                <td onclick="fillShape(2)">
-                    <img id="O-image-2" src="./img/O.png" class="d-none">
-                    <img id="X-image-2" src="./img/X.png" class="d-none">
-                </td>
-            </tr>
-            <tr>
-                <td onclick="fillShape(3)">
-                    <img id="O-image-3" src="./img/O.png" class="d-none">
-                    <img id="X-image-3" src="./img/X.png" class="d-none">
-                </td>
-                <td onclick="fillShape(4)">
-                    <img id="O-image-4" src="./img/O.png" class="d-none">
-                    <img id="X-image-4" src="./img/X.png" class="d-none">
-                </td>
-                <td onclick="fillShape(5)">
-                    <img id="O-image-5" src="./img/O.png" class="d-none">
-                    <img id="X-image-5" src="./img/X.png" class="d-none">
-                </td>
-            </tr>
-            <tr>
-                <td onclick="fillShape(6)">
-                    <img id="O-image-6" src="./img/O.png" class="d-none">
-                    <img id="X-image-6" src="./img/X.png" class="d-none">
-                </td>
-                <td onclick="fillShape(7)">
-                    <img id="O-image-7" src="./img/O.png" class="d-none">
-                    <img id="X-image-7" src="./img/X.png" class="d-none">
-                </td>
-                <td onclick="fillShape(8)">
-                    <img id="O-image-8" src="./img/O.png" class="d-none">
-                    <img id="X-image-8" src="./img/X.png" class="d-none">
-                </td>
-            </tr>
-        </table>
+        <div id="Gameover" class="gameover d-none">
+            <img src="img/you-win.png" alt="You Win">
+            <div id="Player-win" class="player-win"></div>
+            <div class="button-container">
+                <div class="d-flex-center">
+                    <div class="btn-start" onclick="startGame()">Revange</div>
+                </div>
+                <div class="d-flex-center">
+                    <div class="btn-start" onclick="startGameFromBeginning()">New Players</div>
+                </div>
+            </div>
+        </div>
 
-        <div class="d-flex-center">
-            <div class="btn-start" onclick="startGame()">Neustart</div>
+        <div id="Gamescreen" class="d-none" >
+
+            <div class="player-container">
+                <div id="Player1-container" class="player">
+                    <span id="Player1">Player 1 </span><img src="./img/X.png">
+                </div>
+                <div id="Player2-container" class="player">
+                    <span id="Player2">Player 2 </span><img src="./img/O.png">
+                </div>
+            </div>
+
+            <div id="Line-1" class="horizontal-line" style="top: 144px"></div>
+            <div id="Line-2" class="horizontal-line" style="top: 267px"></div>
+            <div id="Line-3" class="horizontal-line" style="top: 391px"></div>
+            <div id="Line-4" class="horizontal-line make-vertical" style="left: -86px"></div>
+            <div id="Line-5" class="horizontal-line make-vertical"></div>
+            <div id="Line-6" class="horizontal-line make-vertical" style="right: -86px"></div>
+            <div id="Line-7" class="horizontal-line make-diagonal-topleft" ></div>
+            <div id="Line-8" class="horizontal-line make-diagonal-topright" ></div>
+            
+            <table>        
+                            
+                <tr>
+                    <td onclick="fillShape(0)">
+                        <img id="X-image-0" src="./img/X.png" class="d-none">
+                        <img id="O-image-0" src="./img/O.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(1)">
+                        <img id="O-image-1" src="./img/O.png" class="d-none">
+                        <img id="X-image-1" src="./img/X.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(2)">
+                        <img id="O-image-2" src="./img/O.png" class="d-none">
+                        <img id="X-image-2" src="./img/X.png" class="d-none">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td onclick="fillShape(3)">
+                        <img id="O-image-3" src="./img/O.png" class="d-none">
+                        <img id="X-image-3" src="./img/X.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(4)">
+                        <img id="O-image-4" src="./img/O.png" class="d-none">
+                        <img id="X-image-4" src="./img/X.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(5)">
+                        <img id="O-image-5" src="./img/O.png" class="d-none">
+                        <img id="X-image-5" src="./img/X.png" class="d-none">
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="fillShape(6)">
+                        <img id="O-image-6" src="./img/O.png" class="d-none">
+                        <img id="X-image-6" src="./img/X.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(7)">
+                        <img id="O-image-7" src="./img/O.png" class="d-none">
+                        <img id="X-image-7" src="./img/X.png" class="d-none">
+                    </td>
+                    <td onclick="fillShape(8)">
+                        <img id="O-image-8" src="./img/O.png" class="d-none">
+                        <img id="X-image-8" src="./img/X.png" class="d-none">
+                    </td>
+                </tr>
+            </table>
+
+            <div id="Button-gamescreen" class="d-flex-center">
+                <div class="btn-start" onclick="startGame()">Neustart</div>
+            </div>
+
         </div>
 
     </div>
@@ -76,3 +121,5 @@
 </body>
 
 </html>
+
+<script src="script.js"></script>
