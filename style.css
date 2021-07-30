@@ -11,6 +11,7 @@ body{
 .d-none{
     display: none;
 }
+
 .d-flex-center{
     display: flex;
     justify-content: center;
@@ -26,6 +27,8 @@ body{
 
 /* Show Player */
 .player-container{
+    display: flex;
+    justify-content: space-around;
     margin-bottom: 30px;
 }
 .player-container img{
@@ -42,10 +45,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 /* Gamefield */
+
 tr{
     width: 300px;
 

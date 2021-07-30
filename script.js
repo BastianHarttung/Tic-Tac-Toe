@@ -24,22 +24,23 @@ function cleanField(){
 };
 
 function fillShape(id){
-    
-    if (player == 'X') {
-        fields[id] = 'X';
-        document.getElementById('Player2-container').classList.add('active');
-        document.getElementById('Player1-container').classList.remove('active');
-        player = 'O';
-    }else if (player =='O'){
-        fields[id] = 'O';
-        document.getElementById('Player1-container').classList.add('active');
-        document.getElementById('Player2-container').classList.remove('active');
-        player = 'X';
-    }    
-        
-    draw();
+    if(!fields[id]){
+        if (player == 'X') {
+            fields[id] = 'X';
+            document.getElementById('Player2-container').classList.add('active');
+            document.getElementById('Player1-container').classList.remove('active');
+            player = 'O';
+        }else if (player =='O'){
+            fields[id] = 'O';
+            document.getElementById('Player1-container').classList.add('active');
+            document.getElementById('Player2-container').classList.remove('active');
+            player = 'X';
+        }    
+            
+        draw();
 
-    checkForWin();
+        checkForWin();
+    }
 };
 
 function draw(){
