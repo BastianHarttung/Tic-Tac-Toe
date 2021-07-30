@@ -8,12 +8,14 @@ let gameOver = false;
 let AUDIO_WIN = new Audio('audio/end-applause.wav');
 
 function startGameFromBeginning(){
+    stopAudio();
     document.getElementById('Gamescreen').classList.add('d-none');
     document.getElementById('Startscreen').classList.remove('d-none');    
     document.getElementById('Gameover').classList.add('d-none');    
 }
 
 function startGame(){
+    stopAudio();
     winner = undefined;
     player = 'X';
     fields = [];
@@ -120,14 +122,9 @@ function checkForWin(){
 };
 
 function eraseLines(){
-    document.getElementById('Line-1').style.transform = 'scaleX(0)';
-    document.getElementById('Line-2').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-3').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-4').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-5').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-6').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-7').style.transform = 'scaleX(0)'; 
-    document.getElementById('Line-8').style.transform = 'scaleX(0)'; 
+    for (let i = 1; i <= 8; i++) {
+        document.getElementById('Line-'+i).style.transform = 'scaleX(0)';        
+    }    
 }
     
 function winAlert(winner){
@@ -148,3 +145,7 @@ function winAlert(winner){
     
 }
 
+function stopAudio(){
+    AUDIO_WIN.pause();
+    AUDIO_WIN.currentTime =0;
+}
