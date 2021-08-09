@@ -79,33 +79,17 @@ function draw(){
     }
 };
 
+
 function checkForWin(){   
     /* Horizontal */
-    if(fields[0] == fields[1] && fields[1] == fields[2] && fields[0]){
-        winner = fields[0];  
-        document.getElementById('Line-1').style.transform = 'scaleX(1)';    
-    }
-    if(fields[3] == fields[4] && fields[4] == fields[5] && fields[3]){
-        winner = fields[3];
-        document.getElementById('Line-2').style.transform = 'scaleX(1)';  
-    }
-    if(fields[6] == fields[7] && fields[7] == fields[8] && fields[6]){
-        winner = fields[6];
-        document.getElementById('Line-3').style.transform = 'scaleX(1)';  
-    }
+    checkHorizontalLines(0,1,2,'Line-1');
+    checkHorizontalLines(3,4,5,'Line-2');
+    checkHorizontalLines(6,7,8,'Line-3');    
     /* Vertikal */
-    if(fields[0] == fields[3] && fields[3] == fields[6] && fields[0]){
-        winner = fields[0];
-        document.getElementById('Line-4').style.transform = ' rotate(90deg) scaleX(1)';  
-    }
-    if(fields[1] == fields[4] && fields[4] == fields[7] && fields[1]){
-        winner = fields[1];
-        document.getElementById('Line-5').style.transform = 'rotate(90deg) scaleX(1)';  
-    }
-    if(fields[2] == fields[5] && fields[5] == fields[8] && fields[2]){
-        winner = fields[2];
-        document.getElementById('Line-6').style.transform = 'rotate(90deg) scaleX(1)';  
-    }
+    checkVerticalLines(0,3,6,'Line-4');
+    checkVerticalLines(1,4,7,'Line-5');
+    checkVerticalLines(2,5,8,'Line-6'); 
+
     /* Diagonal */
     if(fields[0] == fields[4] && fields[4] == fields[8] && fields[0]){
         winner = fields[0];
@@ -120,6 +104,20 @@ function checkForWin(){
         winAlert(winner);
     }
 };
+
+function checkHorizontalLines(field1,field2,field3,id){
+    if(fields[field1] == fields[field2] && fields[field2] == fields[field3] && fields[field1]){
+        winner = fields[field1];  
+        document.getElementById(id).style.transform = 'scaleX(1)';    
+    }
+}
+function checkVerticalLines(field1,field2,field3,id){
+    if(fields[field1] == fields[field2] && fields[field2] == fields[field3] && fields[field1]){
+        winner = fields[field1];
+        document.getElementById(id).style.transform = ' rotate(90deg) scaleX(1)';  
+    }
+}
+
 
 function eraseLines(){
     for (let i = 1; i <= 8; i++) {
